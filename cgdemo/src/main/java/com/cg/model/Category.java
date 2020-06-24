@@ -1,36 +1,27 @@
 package com.cg.model;
 
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Category {
     @Id
+    @Column(name= "category_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long categoryId;
+
+    @Column(name= " category_name")
     private String name;
+
+    @Column(name= " category_desc")
     private String description;
 
-    public Category(){}
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private Set<Product> products;
 
-    @OneToMany(mappedBy = "category")
-    public List<Product> foodList;
-
-    public Category(String name) {
-        this.name=name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Category() {
     }
 
     public String getName() {
@@ -47,5 +38,23 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", products=" + products +
+                '}';
     }
 }

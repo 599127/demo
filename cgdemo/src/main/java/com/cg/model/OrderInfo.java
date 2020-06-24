@@ -5,11 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class OrderInfo {
+
     @Id
+    @Column(name= "order_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private long orderId;
+
+    @OneToMany(mappedBy="order")
+    private Set<Product> product;
+
     private Long id;
     private String firstName;
     private String lastName;
