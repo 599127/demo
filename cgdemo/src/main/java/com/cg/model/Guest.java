@@ -128,7 +128,7 @@ public class Guest implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();
-		guestRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
+		//guestRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
 		return authorities;
 	}
 

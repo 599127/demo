@@ -1,16 +1,10 @@
 package com.cg.model;
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +13,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class User implements UserDetails, Serializable {
+public class User{
 
-	private static final long serialVersionUID = 687123L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,12 +37,11 @@ public class User implements UserDetails, Serializable {
 
     private String company;
     private String fax;
+	private String flgauth;
+	private String token;
+	private String role;
 
-
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonIgnore
-	private Set<UserRole> userRoles = new HashSet<>();
-	//private ShoppingCart shoppingCart;
+	
     
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date joinDate;
@@ -225,38 +215,37 @@ public class User implements UserDetails, Serializable {
 		this.enabled = enabled;
 	}
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
+
+	public String getFlgauth() {
+		return flgauth;
 	}
 
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
+
+	public void setFlgauth(String flgauth) {
+		this.flgauth = flgauth;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-         Set<GrantedAuthority> authorities= new HashSet<>();
-         userRoles.forEach(ur-> authorities.add(new Authority(ur.getRole().getName())));
-		return authorities;
+
+	public String getToken() {
+		return token;
 	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
+
+	public String getRole() {
+		return role;
 	}
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
+
+	public void setRole(String role) {
+		this.role = role;
 	}
-	
-	
-	
+
+
 
 	
 }

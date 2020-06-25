@@ -18,17 +18,17 @@ public class GuestRole {
 
     public GuestRole () {}
 
-    public GuestRole (Guest guest, Role role) {
+    public GuestRole (Guest guest/*, Role role*/) {
         this.guest = guest;
-        this.role = role;
+        //this.role = role;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "guest_id")
     private Guest guest;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Role role;
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //private Role role;
 
     public long getGuestRoleId() {
         return guestRoleId;
@@ -46,11 +46,11 @@ public class GuestRole {
         this.guest = guest;
     }
 
-    public Role getRole() {
+    /*public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
-    }
+    }*/
 }

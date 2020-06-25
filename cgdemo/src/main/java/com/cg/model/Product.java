@@ -96,11 +96,11 @@ public class Product implements Serializable{
 	@Column(name ="product_feedback")
     private String productFeedback;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "product")
     @JsonIgnore
     private List<ProductToCart> foodToCartList;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "product")
     @JsonIgnore
     private List<ProductToOrder> foodToOrderList;
 
