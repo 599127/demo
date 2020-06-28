@@ -1,7 +1,5 @@
 package com.cg.services.impl;
 
-import java.util.List;
-
 import com.cg.model.User;
 
 
@@ -19,7 +17,5 @@ public interface UserServiceImpl {
 	User updatePassword(User user, String currentPassword, String newPassword);
 
 	User getUserById(Long id);
-	
-	List<User> getAllUsers();
 
 }

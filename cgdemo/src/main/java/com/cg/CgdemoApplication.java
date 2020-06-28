@@ -34,13 +34,6 @@ public class CgdemoApplication implements CommandLineRunner{
 	
 	userService.createUser(user1);
 
-	User user2 = new User();
-	user2.setFirstName("Anu");
-	user2.setLastName("Bhardwaj");
-	user2.setUsername("anu");
-	user2.setPassword(SecurityUtility.passwordEncoder().encode("a"));
-	user2.setEmail("anu.bhardwaj@gmail.com");
-	user1.setRole(RoleEnum.ADMIN.getCode());
-	userService.createUser(user1);
+	
 	}
 }

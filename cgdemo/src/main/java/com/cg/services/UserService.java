@@ -1,5 +1,7 @@
 package com.cg.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,32 +30,33 @@ public class UserService  implements UserServiceImpl{
 
 	@Override
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public User getUserByUsername(String username) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public User updateUser(User user, User localUser) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public User updatePassword(User user, String currentPassword, String newPassword) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public User getUserById(Long id) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		
+		return userRepository.findAll();
 	}
 
 }

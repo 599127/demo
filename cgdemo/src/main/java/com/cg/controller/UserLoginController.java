@@ -1,10 +1,12 @@
 package com.cg.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import com.cg.repository.UserRepository;
 import com.cg.services.UserService;
 
 @RestController
+@CrossOrigin
 public class UserLoginController {
 	
 	
@@ -50,6 +53,18 @@ public class UserLoginController {
 		}
 		return new ResponseEntity<User>(localUser.get(), HttpStatus.NOT_FOUND);
 	}
+	
+	
+	@GetMapping("/user/all")
+	public ResponseEntity<List<User>> getAllUsers(){
+		
+		List<User> listUser = userService.getAllUsers();
+		
+		return new ResponseEntity<List<User>>(listUser, HttpStatus.OK);
+	}
+	
+	
+
 	
 	@GetMapping("/test")
 	public String test() {
