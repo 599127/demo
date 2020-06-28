@@ -65,11 +65,4 @@ public class UserLoginController {
 	
 	
 
-	
-	@GetMapping("/test")
-	public String test() {
-		System.out.println("-----------------------------------");
-		return "Test working";
-	}
-
 }
