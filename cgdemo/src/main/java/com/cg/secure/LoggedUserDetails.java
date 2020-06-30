@@ -12,9 +12,7 @@ import com.cg.dto.UserDto;
 import com.cg.enums.UserActive;
 public class LoggedUserDetails implements UserDetails{
 
-	/**
-	 * 
-	 */
+	 
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
